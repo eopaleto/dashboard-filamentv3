@@ -4,6 +4,7 @@ namespace App\Filament\Widgets;
 
 use App\Models\User;
 use App\Models\StatusAlat;
+use Illuminate\Support\Facades\Auth;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 
@@ -17,7 +18,7 @@ class StatsOverview extends BaseWidget
 
     protected function getStats(): array
     {
-        $user = auth()->user();
+        $user = Auth::user();
 
         $alat = StatusAlat::first();
         $statusText = $alat && $alat->status == 1 ? 'Online' : 'Offline';

@@ -6,6 +6,7 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
+use Filament\Support\Assets\Css;
 use Filament\Navigation\MenuItem;
 use Filament\Support\Colors\Color;
 use Filament\Http\Middleware\Authenticate;
@@ -45,6 +46,9 @@ class AdminPanelProvider extends PanelProvider
                     ->shouldShowBrowserSessionsForm()
                     ->setNavigationGroup('Menu Lainnya')
                     ->setSort(4)
+            ])
+            ->assets([
+                Css::make('custom-style', asset('css/custom-filament.css')),
             ])
             ->spa()
             ->userMenuItems([

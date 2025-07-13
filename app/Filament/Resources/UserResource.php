@@ -15,7 +15,6 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
 use App\Filament\Resources\UserResource\Pages;
 
 class UserResource extends Resource
@@ -108,13 +107,6 @@ class UserResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
-                    ->before(function ($record) {
-                        Notification::make()
-                            ->title('User Dihapus')
-                            ->body("User <strong>{$record->name}</strong> telah berhasil dihapus.")
-                            ->success()
-                            ->sendToDatabase(auth()->user());
-                    }),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
