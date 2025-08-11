@@ -16,16 +16,17 @@ class KekeruhanAirChart extends ChartWidget
     protected static ?string $heading = 'Grafik Kekeruhan Air';
     protected static ?string $subheading = 'Grafik Kekeruhan Air';
     protected static ?int $sort = 2;
-    protected static ?string $pollingInterval = '5s';
+    protected static ?string $pollingInterval = '3s';
     protected static ?string $maxHeight = '300px';
 
     protected static ?array $options = [
         'responsive' => true,
+        'animation' => [
+            'duration' => 1000,
+            'easing' => 'easeInOutQuad',
+            'loop' => false,
+        ],
         'plugins' => [
-            'animation' => [
-                'duration' => 3000,
-                'easing' => 'easeOutQuart',
-            ],
             'legend' => [
                 'display' => false,
             ],

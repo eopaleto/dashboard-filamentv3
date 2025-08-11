@@ -10,6 +10,7 @@ class StatusAliranChart extends ChartWidget
 {
     protected static ?string $heading = 'Statistik Kecepatan Aliran';
     protected static ?string $maxHeight = '300px';
+    protected static ?string $pollingInterval = '3s';
 
     public function getColumnSpan(): int|string|array
     {

@@ -113,7 +113,7 @@ class SensorKekeruhanAirResource extends Resource
                     ->label('Download CSV')
                     ->icon('heroicon-o-arrow-down-tray')
                     ->action(function ($records) {
-                        $filename = 'kecepatan_aliran_export_' . now()->format('Ymd_His') . '.csv';
+                        $filename = 'kekeruhan_air_export_' . now()->format('Ymd_His') . '.csv';
 
                         $headers = [
                             'Content-Type' => 'text/csv',
@@ -122,13 +122,14 @@ class SensorKekeruhanAirResource extends Resource
 
                         $callback = function () use ($records) {
                             $file = fopen('php://output', 'w');
-                            fputcsv($file, ['Nama Sensor', 'Kecepatan Aliran', 'Waktu']);
+                            fputcsv($file, ['Nama Sensor', 'Kekeruhan Air', 'Waktu'. 'Keterangan']);
 
                             foreach ($records as $record) {
                                 fputcsv($file, [
                                     $record->nama_sensor,
-                                    $record->kecepatan_aliran,
+                                    $record->kekeruhan_air,
                                     $record->waktu,
+                                    $record->status
                                 ]);
                             }
 

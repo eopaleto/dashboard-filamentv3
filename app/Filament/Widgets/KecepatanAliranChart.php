@@ -16,14 +16,15 @@ class KecepatanAliranChart extends ChartWidget
     protected static ?string $heading = 'Grafik Kecepatan Aliran Air';
     protected static ?string $subheading = 'Grafik Kecepatan Aliran Air';
     protected static ?int $sort = 2;
-    protected static ?string $pollingInterval = '5s';
+    protected static ?string $pollingInterval = '3s';
     protected static ?string $maxHeight = '300px';
 
     protected static ?array $options = [
         'responsive' => true,
         'animation' => [
-            'duration' => 3000,
-            'easing' => 'easeOutQuart',
+            'duration' => 1000,
+            'easing' => 'easeInOutQuad',
+            'loop' => false,
         ],
         'plugins' => [
             'legend' => [
@@ -97,7 +98,7 @@ class KecepatanAliranChart extends ChartWidget
                     'tension' => 0.3,
                 ],
             ],
-            'labels' => $data->pluck('waktu')->map(fn($w) => Carbon::parse($w)->format('d F Y H:i:s')),
+            'labels' => $data->pluck('waktu')->map(fn($w) => Carbon::parse($w)->format('H:i:s')),
         ];
     }
 

@@ -19,13 +19,13 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-public function boot(): void
-{
-    Route::middleware('api')
-        ->prefix('api')
-        ->group(function () {
-            Route::post('/get-data', [SensorController::class, 'store']);
-            Route::get('/get-data', fn () => response('', 204));
-        });
-}
+    public function boot(): void
+    {
+        Route::middleware('api')
+            ->prefix('api')
+            ->group(function () {
+                Route::post('/sensor', [SensorController::class, 'store']);
+                Route::get('/sensor', [SensorController::class, 'get']);
+            });
+    }
 }

@@ -123,13 +123,14 @@ class SensorKecepatanAliranResource extends Resource
 
                         $callback = function () use ($records) {
                             $file = fopen('php://output', 'w');
-                            fputcsv($file, ['Nama Sensor', 'Kecepatan Aliran', 'Waktu']);
+                            fputcsv($file, ['Nama Sensor', 'Kecepatan Aliran', 'Waktu', 'Keterangan']);
 
                             foreach ($records as $record) {
                                 fputcsv($file, [
                                     $record->nama_sensor,
                                     $record->kecepatan_aliran,
                                     $record->waktu,
+                                    $record->status,
                                 ]);
                             }
 
